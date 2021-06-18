@@ -28,6 +28,5 @@ print('GroundTruth: ', ' '.join('%5s' % classes[labels[j]] for j in range(4)))
 body = {"inputs": images.tolist()}
 r = requests.post("http://localhost:8890/score", json=body)
 predicted = r.json()
-print(predicted)
 
-print('Predicted: ', ' '.join('%5s' % classes[predicted[j]] for j in range(4)))
+print('Predicted  : ', ' '.join('%5s' % classes[predicted[j]] for j in range(4)))
