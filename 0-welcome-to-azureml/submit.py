@@ -16,7 +16,7 @@ config = ScriptRunConfig(
 )
 
 # get/create experiment
-exp = Experiment(ws, 'experiment_name')
+exp = Experiment(ws, 'azureml-blitz')
 
 # submit script to AML
 run = exp.submit(config)

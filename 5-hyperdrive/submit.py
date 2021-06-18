@@ -42,6 +42,6 @@ if __name__ == "__main__":
         max_concurrent_runs=10,
     )
 
-    run = Experiment(ws, "test-intune-demo").submit(hyperdrive_config)
+    run = Experiment(ws, "azureml-blitz").submit(hyperdrive_config)
     run.set_tags({"part": "5"})
     print(run.get_portal_url()) # link to ml.azure.com

@@ -20,6 +20,6 @@ if __name__ == "__main__":
         arguments=["--output_dir", "outputs"],
     )
 
-    run = Experiment(ws, "test-intune-demo").submit(config)
+    run = Experiment(ws, "azureml-blitz").submit(config)
     run.set_tags({"part": "3"})
     print(run.get_portal_url())

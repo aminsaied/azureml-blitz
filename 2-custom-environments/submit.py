@@ -21,7 +21,7 @@ config = ScriptRunConfig(
 )
 
 # submit script to AML
-exp = Experiment(ws, "test-intune-demo")
+exp = Experiment(ws, "azureml-blitz")
 run = exp.submit(config)
 run.set_tags({"part": "2"})
 print(run.get_portal_url()) # link to ml.azure.com
