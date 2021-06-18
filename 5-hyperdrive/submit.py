@@ -28,19 +28,12 @@ if __name__ == "__main__":
 
     convert = lambda x: float(math.log(x))
     search_space = {
-        "--learning_rate": hyperdrive.loguniform(convert(1e-10), convert(1e-3)),
-        "--momentum": hyperdrive.uniform(0.5, 1),
+        "--learning_rate": None,
+        "--momentum": None,
     }
-    hyperparameter_sampling = RandomParameterSampling(search_space)
+    hyperparameter_sampling = None
 
-    hyperdrive_config = HyperDriveConfig(
-        run_config=config,
-        hyperparameter_sampling=hyperparameter_sampling,
-        primary_metric_name="loss",
-        primary_metric_goal=hyperdrive.PrimaryMetricGoal.MAXIMIZE,
-        max_total_runs=10,
-        max_concurrent_runs=10,
-    )
+    hyperdrive_config = None
 
     run = Experiment(ws, "azureml-blitz").submit(hyperdrive_config)
     run.set_tags({"part": "5"})

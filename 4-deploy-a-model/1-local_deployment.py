@@ -15,48 +15,30 @@ LOCAL_MODEL_DIR = "../outputs"
 
 ws = Workspace.from_config()
 
-deployment_config = LocalWebservice.deploy_configuration(port=8890)
+deployment_config = None
 
 model_path = os.path.join(LOCAL_MODEL_DIR, "net.pt")
 try:
     print(f"Getting registered model {MODEL_NAME}")
-    registered_model = Model(ws, MODEL_NAME)
+    registered_model = None
 except WebserviceException:
     print("Register model...")
-    registered_model = Model.register(
-        workspace=ws,
-        model_name=MODEL_NAME,
-        model_path=model_path,
-        model_framework="PyTorch",
-        description="cifar10-net",
-    )
+    registered_model = None
 
-env = ws.environments["AzureML-pytorch-1.7-ubuntu18.04-py37-cpu-inference"]
+env = None
 
-inference_config = InferenceConfig(
-    source_directory=".",
-    entry_script="score.py",
-    environment=env,
-)
+inference_config = None
 
 try:
-    service = Webservice(ws, name=SERVICE_NAME)
+    service = None
     if service:
         service.delete()
         print("Deleted existing service")
 except WebserviceException as e:
-    print()
+    pass
 
 print("Deploying model to service...")
-service = Model.deploy(
-    workspace=ws,
-    name=SERVICE_NAME,
-    models=[registered_model],
-    inference_config=inference_config,
-    deployment_config=deployment_config,
-    overwrite=True,
-    show_output=True,
-)
+service = None
 service.wait_for_deployment(True)
 
 # output scoring url

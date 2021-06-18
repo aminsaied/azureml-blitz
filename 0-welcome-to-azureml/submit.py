@@ -3,20 +3,16 @@
 from azureml.core import Workspace, Experiment, ScriptRunConfig
 
 # get workspace
-ws = Workspace.from_config()
+ws = None
 
 # get compute target
-target = ws.compute_targets['cpucluster']
+target = None
 
 # set up script run configuration
-config = ScriptRunConfig(
-    source_directory='.',   # source code to upload to the remote compute
-    script='hello.py',      # the entry point
-    compute_target=target,  # azureml compute
-)
+config = None
 
 # get/create experiment
-exp = Experiment(ws, 'azureml-blitz')
+exp = None
 
 # submit script to AML
 run = exp.submit(config)

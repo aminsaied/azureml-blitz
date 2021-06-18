@@ -15,7 +15,7 @@ import torchvision.transforms as transforms
 from model import Net
 
 # connect to Azure ML Run
-run = Run.get_context()
+run = None
 
 # download CIFAR 10 data
 trainset = torchvision.datasets.CIFAR10(
@@ -67,7 +67,7 @@ if __name__ == "__main__":
             if i % 2000 == 1999:
                 loss = running_loss / 2000
                 print(f"epoch={epoch + 1}, batch={i + 1:5}: loss {loss:.2f}")
-                run.log("loss", loss)
+                raise NotImplementedError("Log metric to run")
                 running_loss = 0.0
 
     print("Finished Training")

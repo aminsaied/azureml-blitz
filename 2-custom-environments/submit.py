@@ -10,7 +10,7 @@ ws = Workspace.from_config()
 target = ws.compute_targets['cpucluster']
 
 # create environment
-env = Environment.from_pip_requirements('blitz-env', 'requirements.txt')
+env = None
 
 # set up script run configuration
 config = ScriptRunConfig(

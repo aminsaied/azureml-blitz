@@ -10,15 +10,18 @@ ws = Workspace.from_config()
 target = ws.compute_targets["cpucluster"]
 
 # create dataset
-datastore = ws.get_default_datastore()
-dataset = Dataset.File.from_files(path=(datastore, "azureml-blitz"))
+datastore = None
+dataset = None
+
+# pass dataset as argument
+arguments = None
 
 # set up script run configuration
 config = ScriptRunConfig(
     source_directory='.',
     script='read_data.py',
     compute_target=target,
-    arguments=["--data_dir", dataset.as_mount(), "--filename", "wisdom.txt"]
+    arguments=arguments,
 )
 
 # submit script to AML

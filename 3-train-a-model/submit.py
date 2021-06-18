@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
     target = ws.compute_targets["gpu-nc6-ssh"]
 
-    env = ws.environments['AzureML-PyTorch-1.6-GPU']
+    env = None
 
     config = ScriptRunConfig(
         source_directory=".",
